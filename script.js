@@ -2,12 +2,11 @@ const weddingAt = new Date('2026-11-21T20:52:00+05:30').getTime();
 const $ = id => document.getElementById(id);
 let telugu = false;
 let celebrationStarted = false;
-const teDigits = value => String(value).replace(/[0-9]/g, d => '౦౧౨౩౪౫౬౭౮౯'[Number(d)]);
 
 function updateTimer() {
   let diff = weddingAt - Date.now();
   if (diff <= 0) {
-    ['days','hours','minutes','seconds'].forEach(id => $(id).textContent = telugu ? '౦౦' : '00');
+    ['days','hours','minutes','seconds'].forEach(id => $(id).textContent = '00');
     $('timerNote').textContent = telugu ? 'శుభ ముహూర్తం వచ్చేసింది!' : 'The wedding moment is here!';
     $('celebrationMessage').hidden = false;
     if (!celebrationStarted) { celebrationStarted = true; startConfetti(); }
@@ -19,7 +18,8 @@ function updateTimer() {
   const values = {days:d,hours:h,minutes:m,seconds:s};
   Object.entries(values).forEach(([id,value]) => {
     const formatted = String(value).padStart(2,'0');
-    $(id).textContent = telugu ? teDigits(formatted) : formatted;
+    // Countdown numerals intentionally remain Western/English digits in both languages.
+    $(id).textContent = formatted;
   });
 }
 
@@ -50,7 +50,7 @@ $('langToggle').addEventListener('click', () => {
 function updateWhatsAppLink() {
   const url = window.location.href;
   const message = telugu
-    ? `నాగ సాయి మణికంఠ తేజ & రాజేశ్వరి వివాహానికి మీకు హృదయపూర్వక ఆహ్వానం!\nవివాహం: ౨౧ నవంబర్ ౨౦౨౬, రాత్రి ౮:౫౨ – శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ.\nరిసెప్షన్: ౨౨ నవంబర్ ౨౦౨౬, సాయంత్రం ౭:౦౦ – సంగెపు కళ్యాణమండపం, గొసాల.\n${url}`
+    ? `నాగ సాయి మణికంఠ తేజ & రాజేశ్వరి వివాహానికి మీకు హృదయపూర్వక ఆహ్వానం!\nవివాహం: 21 నవంబర్ 2026, రాత్రి 8:52 – శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ.\nరిసెప్షన్: 22 నవంబర్ 2026, సాయంత్రం 7:00 – సంగెపు కళ్యాణమండపం, గొసాల.\n${url}`
     : `You are warmly invited to the wedding of Naga Sai Manikanta Teja & Rajeswari!\nWedding: 21 November 2026, 8:52 PM – Sri Balaji Convention, Penugonda.\nReception: 22 November 2026, 7:00 PM – Sangepu Kalyanamandapam, Gosala.\n${url}`;
   $('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(message)}`;
 }
@@ -75,5 +75,11 @@ function startConfetti() {
 }
 
 updateLanguage();
-setInterval(updateTimer,1000);
+// Keep the countdown ticking once per second. Recalculate immediately when a
+// visitor returns to the tab so background-tab throttling never leaves stale time.
+setInterval(updateTimer, 1000);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) updateTimer();
+});
+window.addEventListener('pageshow', updateTimer);
 window.addEventListener('resize', () => { if (celebrationStarted) startConfetti(); });
