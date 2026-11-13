@@ -67,34 +67,30 @@
 }
 
 
-/* Hyper signature: same size as footer text; only the typeface is distinctive */
+
+/* Simple, consistent creator credit across desktop and mobile */
 .site-footer { color:#FFF4DF; text-align:center; font-size:12px; line-height:1.8; padding:24px; background:#451b19; }
 .site-footer span { color:#FFF4DF; }
-.site-footer .creator-contact {
+.site-footer .creator-contact,
+.site-footer .creator-contact:link,
+.site-footer .creator-contact:visited {
   display:inline;
   margin:0;
   padding:0;
   border:0;
   border-radius:0;
-  background:transparent;
+  background:none;
   color:#FFE3A8 !important;
-  font-family:'Kaushan Script',cursive;
-  font-size:1em;
-  font-weight:400;
-  letter-spacing:0;
-  line-height:inherit;
-  text-decoration:underline !important;
-  text-decoration-color:rgba(255,227,168,.65) !important;
-  text-underline-offset:3px;
+  font:inherit;
+  text-decoration:underline;
+  text-underline-offset:2px;
   text-shadow:none;
-  transition:color .2s ease;
   vertical-align:baseline;
 }
-.site-footer .creator-contact:link,.site-footer .creator-contact:visited { color:#FFE3A8 !important; }
-.site-footer .creator-contact:hover,.site-footer .creator-contact:focus-visible {
+.site-footer .creator-contact:hover,
+.site-footer .creator-contact:focus-visible {
   color:#FFFFFF !important;
-  background:transparent;
+  background:none;
+  outline:none;
   transform:none;
-  outline:1px solid #FFE3A8;
-  outline-offset:2px;
 }
