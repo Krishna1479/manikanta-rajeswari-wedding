@@ -4,12 +4,14 @@ let telugu = false;
 let celebrationStarted = false;
 
 function updateTimer() {
+  const ids = ['days','hours','minutes','seconds'];
+  if (!ids.every(id => $(id))) return;
   let diff = weddingAt - Date.now();
   if (diff <= 0) {
     ['days','hours','minutes','seconds'].forEach(id => $(id).textContent = '00');
-    $('timerNote').textContent = telugu ? 'శుభ ముహూర్తం వచ్చేసింది!' : 'The wedding moment is here!';
-    $('celebrationMessage').hidden = false;
-    if (!celebrationStarted) { celebrationStarted = true; startConfetti(); }
+    if ($('timerNote')) $('timerNote').textContent = telugu ? 'శుభ ముహూర్తం వచ్చేసింది!' : 'The wedding moment is here!';
+    if ($('celebrationMessage')) $('celebrationMessage').hidden = false;
+    if (!celebrationStarted) { celebrationStarted = true; if ($('confettiCanvas')) startConfetti(); }
     return;
   }
   const d = Math.floor(diff / 86400000); diff %= 86400000;
@@ -74,12 +76,20 @@ function startConfetti() {
   draw();
 }
 
-updateLanguage();
-// Keep the countdown ticking once per second. Recalculate immediately when a
-// visitor returns to the tab so background-tab throttling never leaves stale time.
-setInterval(updateTimer, 1000);
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) updateTimer();
-});
-window.addEventListener('pageshow', updateTimer);
-window.addEventListener('resize', () => { if (celebrationStarted) startConfetti(); });
+function initWeddingPage() {
+  // Render immediately, then keep ticking independently of language or layout.
+  try { updateLanguage(); } catch (error) { console.error('Language setup:', error); }
+  updateTimer();
+  window.setInterval(updateTimer, 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateTimer();
+  });
+  window.addEventListener('pageshow', updateTimer);
+  window.addEventListener('focus', updateTimer);
+  window.addEventListener('resize', () => { if (celebrationStarted && $('confettiCanvas')) startConfetti(); });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initWeddingPage, { once: true });
+} else {
+  initWeddingPage();
+}
