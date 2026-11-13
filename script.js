@@ -52,8 +52,8 @@ $('langToggle').addEventListener('click', () => {
 function updateWhatsAppLink() {
   const url = window.location.href;
   const message = telugu
-    ? `నాగ సాయి మణికంఠ తేజ & రాజేశ్వరి వివాహానికి మీకు హృదయపూర్వక ఆహ్వానం!\nవివాహం: 21 నవంబర్ 2026, రాత్రి 8:52 – శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ.\nరిసెప్షన్: 22 నవంబర్ 2026, సాయంత్రం 7:00 – సంగెపు కళ్యాణమండపం, గొసాల.\n${url}`
-    : `You are warmly invited to the wedding of Naga Sai Manikanta Teja & Rajeswari!\nWedding: 21 November 2026, 8:52 PM – Sri Balaji Convention, Penugonda.\nReception: 22 November 2026, 7:00 PM – Sangepu Kalyanamandapam, Gosala.\n${url}`;
+    ? `నాగ సాయి మణికంఠ తేజ & రాజేశ్వరి వివాహానికి మీకు హృదయపూర్వక ఆహ్వానం!\nవివాహం: 21 నవంబర్ 2026, రాత్రి 8:52 – శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ.\nరిసెప్షన్: 22 నవంబర్ 2026, సాయంత్రం 7:00 – సంగెపు శివ కోటేశ్వరరావు కళ్యాణ వేదిక, భవనరుషి, నల్లమేకలవారి వీధి, గొసాల, విజయవాడ.\n${url}`
+    : `You are warmly invited to the wedding of Naga Sai Manikanta Teja & Rajeswari!\nWedding: 21 November 2026, 8:52 PM – Sri Balaji Convention, Penugonda.\nReception: 22 November 2026, 7:00 PM – Sangepu Siva Koteswara Rao Kalyana Vedhika, Bhavanarushi, Nallamekalavari Street, Gosala, Vijayawada.\n${url}`;
   $('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(message)}`;
 }
 
