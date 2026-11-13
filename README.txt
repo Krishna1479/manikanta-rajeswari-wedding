@@ -10,3 +10,4 @@ The countdown runs from JavaScript independently of screen size and refreshes im
 Publish with GitHub Pages from the main branch and repository root. After replacing files, hard-refresh desktop browsers with Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows/Linux).
 
 WhatsApp sharing uses JavaScript Unicode code-point escapes and URLSearchParams for consistent emoji encoding across desktop and mobile browsers.
+\nFinal polish: sticky navigation header; simplified footer credit (crafted with love by Hyper); no back-to-top button.\n
