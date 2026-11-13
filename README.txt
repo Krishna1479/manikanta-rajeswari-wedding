@@ -8,3 +8,5 @@ Files:
 The countdown runs from JavaScript independently of screen size and refreshes immediately on tab return/focus. The script URL includes a cache-busting version so desktop browsers fetch the latest timer code. Numerals remain English digits in both languages. No background music is included.
 
 Publish with GitHub Pages from the main branch and repository root. After replacing files, hard-refresh desktop browsers with Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows/Linux).
+
+WhatsApp sharing uses JavaScript Unicode code-point escapes and URLSearchParams for consistent emoji encoding across desktop and mobile browsers.
