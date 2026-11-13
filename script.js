@@ -50,10 +50,11 @@ $('langToggle').addEventListener('click', () => {
 });
 
 function updateWhatsAppLink() {
-  const url = window.location.href;
+  // Share the clean public URL only; omit tracking parameters and fragments.
+  const url = `${window.location.origin}${window.location.pathname}`;
   const message = telugu
-    ? `నాగ సాయి మణికంఠ తేజ & రాజేశ్వరి వివాహానికి మీకు హృదయపూర్వక ఆహ్వానం!\nవివాహం: 21 నవంబర్ 2026, రాత్రి 8:52 – శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ.\nరిసెప్షన్: 22 నవంబర్ 2026, సాయంత్రం 7:00 – సంగెపు శివ కోటేశ్వరరావు కళ్యాణ వేదిక, భవనరుషి, నల్లమేకలవారి వీధి, గొసాల, విజయవాడ.\n${url}`
-    : `You are warmly invited to the wedding of Naga Sai Manikanta Teja & Rajeswari!\nWedding: 21 November 2026, 8:52 PM – Sri Balaji Convention, Penugonda.\nReception: 22 November 2026, 7:00 PM – Sangepu Siva Koteswara Rao Kalyana Vedhika, Bhavanarushi, Nallamekalavari Street, Gosala, Vijayawada.\n${url}`;
+    ? `💐 శ్రీ సాయి గణేశాయ నమః 💐\n\n💍 నాగ సాయి మణికంఠ తేజ ❤️ రాజేశ్వరి 💍\n\nమా కుటుంబంలో జరుగుతున్న ఈ శుభ వివాహ వేడుకకు మీరు కుటుంబ సమేతంగా విచ్చేసి వధూవరులను ఆశీర్వదించవలసిందిగా మనస్ఫూర్తిగా ఆహ్వానిస్తున్నాము. 🙏✨\n\n🪔 *వివాహ ముహూర్తం*\n📅 21 నవంబర్ 2026\n🕗 రాత్రి 8:52 గంటలకు\n📍 శ్రీ బాలాజీ కన్వెన్షన్, పెనుగొండ\n\n🎉 *రిసెప్షన్ & విందు*\n📅 22 నవంబర్ 2026\n🕖 సాయంత్రం 7:00 గంటల నుండి\n📍 సంగెపు శివ కోటేశ్వరరావు కళ్యాణ వేదిక, భవనరుషి, నల్లమేకలవారి వీధి, గొసాల, విజయవాడ\n\nమీ రాకే మా ఆనందం. మీ ఆశీస్సులు వధూవరులకు అందించండి. ❤️\n\n🌐 పూర్తి ఆహ్వానం & లొకేషన్ వివరాలు:\n${url}\n\n— ప్రేమతో, వధూవరుల కుటుంబ సభ్యులు`
+    : `💐 With the blessings of the Almighty 💐\n\n💍 Naga Sai Manikanta Teja ❤️ Rajeswari 💍\n\nTogether with our families, we warmly invite you and your family to celebrate this special occasion and bless the couple. 🙏✨\n\n🪔 *WEDDING MUHURTHAM*\n📅 Saturday, 21 November 2026\n🕗 8:52 PM\n📍 Sri Balaji Convention, Penugonda\n\n🎉 *RECEPTION & DINNER*\n📅 Sunday, 22 November 2026\n🕖 7:00 PM onwards\n📍 Sangepu Siva Koteswara Rao Kalyana Vedhika, Bhavanarushi, Nallamekalavari Street, Gosala, Vijayawada\n\nYour presence and blessings will make our celebration truly special. ❤️\n\n🌐 View the complete invitation & directions:\n${url}\n\n— With love, the families`;
   $('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(message)}`;
 }
 
