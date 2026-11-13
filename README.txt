@@ -1,13 +1,10 @@
 NAGA SAI MANIKANTA TEJA & RAJESWARI — WEDDING WEBSITE
 
-Upload the contents of this folder into the existing wedding_site folder in your GitHub repository.
-
 Files:
-- index.html: bilingual wedding invitation website
-- style.css: design and responsive layout
-- script.js: countdown, language switch, music controls, WhatsApp sharing and celebration animation
-- assets/wedding-ambience.wav: original instrumental-style background ambience
+- index.html: bilingual Telugu/English wedding invitation
+- style.css: responsive design for mobile, tablet and desktop
+- script.js: full-page language switching, live wedding countdown, confetti and WhatsApp sharing
 
-The invitation photographs are intentionally not included or displayed.
+No background music is included. The Telugu/English switch translates all invitation details, venue names, labels, dates, countdown labels/numbers, page title, map titles and WhatsApp message.
 
-After upload, enable GitHub Pages from Settings > Pages, select main branch and / (root) for the wedding_site folder only if deploying that folder via the existing structure. For the current repo, the cleanest setup is to upload these files to the repository root and select main / (root).
+Publish with GitHub Pages from the main branch and repository root.
